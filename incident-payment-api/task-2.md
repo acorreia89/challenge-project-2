@@ -21,9 +21,9 @@ Nessa fase serão listadas as ferramentas e principais comandos para garantir um
 
 ### 1. Estado geral dos pods e eventos
 
-kubectl get pods -n payment -o wide
-kubectl describe pod <nome-do-pod> -n payment
-kubectl get events -n payment --sort-by=.lastTimestamp
+    - kubectl get pods -n payment -o wide
+    - kubectl describe pod <nome-do-pod> -n payment
+    - kubectl get events -n payment --sort-by=.lastTimestamp
 
 ---
 
@@ -31,32 +31,32 @@ kubectl get events -n payment --sort-by=.lastTimestamp
 
 Comandos para inspecionar os logs recentes da aplicação `payment-api`:
 
-kubectl logs <nome-do-pod> -n payment --tail=200
-kubectl logs <nome-do-pod> -n payment --since=10m
+    - kubectl logs <nome-do-pod> -n payment --tail=200
+    - kubectl logs <nome-do-pod> -n payment --since=10m
 
 ---
 
 ### 3. Métricas de recursos
 
-kubectl top pods -n payment
-kubectl top pod <nome-do-pod> -n payment --containers
+    - kubectl top pods -n payment
+    - kubectl top pod <nome-do-pod> -n payment --containers
 
 ---
 
 ### 4. Teste de conectividade com o RDS
-kubectl exec -it <nome-do-pod> -n payment -- nc -vz <endpoint-rds> 5432
+    - kubectl exec -it <nome-do-pod> -n payment -- nc -vz <endpoint-rds> 5432
 
 ---
 
 ### 5. Métricas do RDS no CloudWatch
-CPUUtilization
-DatabaseConnections
-FreeableMemory
-ReadLatency / WriteLatency
+    - CPUUtilization
+    - DatabaseConnections
+    - FreeableMemory
+    - ReadLatency / WriteLatency
 
 ---
 
 ### 6. Histórico de deploys no ArgoCD
 
-argocd app history payment-api
-argocd app get payment-api
+    - argocd app history payment-api
+    - argocd app get payment-api
