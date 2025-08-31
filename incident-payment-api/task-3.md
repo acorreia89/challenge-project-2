@@ -1,25 +1,28 @@
-3. Apontar hipóteses prováveis sobre a causa.
+# Apontar hipóteses prováveis sobre a causa
 
-Objetivo
+## 🎯 Objetivo
+Identificar e registrar as hipóteses mais prováveis para a origem do problema, com base nas evidências coletadas durante o diagnóstico inicial.  
+O objetivo desta etapa é direcionar a investigação de forma estruturada, priorizando as causas mais plausíveis e permitindo que a equipe valide ou descarte cada uma delas de maneira rápida e eficiente.
 
-Listar as principais hipoteses para o problema.
+---
 
+## 🔍 Hipóteses
 
-1. Problema no banco RDS 
-    - Latência ou indisponibilidade momentânea
-    - Conexões saturadas (max_connections)
-    - Rede (latência entre EKS e RDS)
+1. **Problema no banco RDS**
+    - Latência ou indisponibilidade momentânea.
+    - Conexões saturadas (`max_connections` atingido).
+    - Problemas de rede (latência entre EKS e RDS).
 
-2. Problema de rede no cluster
-    - Latência no VPC CNI
-    - Security Groups ou NACL alterados
+2. **Problema de rede no cluster**
+    - Latência ou falhas no **VPC CNI**.
+    - Alterações recentes em **Security Groups** ou **NACLs**.
 
-3.- Saturação de recursos no serviço
-    - CPU/Memory throttling nos pods
-    - Fila de requisições acumulando
+3. **Saturação de recursos no serviço**
+    - *CPU/Memory throttling* nos pods.
+    - Acúmulo de requisições na fila de processamento.
 
-4. Dependência externa degradada
-    - API de terceiros usada pelo payment-api
+4. **Dependência externa degradada**
+    - API de terceiros utilizada pelo `payment-api` apresentando lentidão ou indisponibilidade.
 
-5. Configuração de pool de conexões
-    - Pool insuficiente ou mal configurado, causando timeouts
+5. **Configuração inadequada do pool de conexões**
+    - Pool insuficiente ou mal configurado, resultando em timeouts e falhas de conexão.
