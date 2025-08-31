@@ -21,30 +21,29 @@ Nessa fase serão listadas as ferramentas e principais comandos para garantir um
 
 ### 1. Estado geral dos pods e eventos
 
-    - kubectl get pods -n payment -o wide
-    - kubectl describe pod <nome-do-pod> -n payment
-    - kubectl get events -n payment --sort-by=.lastTimestamp
+    - kubectl get pods -n payment-api -o wide
+    - kubectl describe pod <nome-do-pod> -n payment-api
+    - kubectl get events -n payment-api
 
 ---
 
 ### 2. Logs da aplicação
 
-Comandos para inspecionar os logs recentes da aplicação `payment-api`:
-
-    - kubectl logs <nome-do-pod> -n payment --tail=200
-    - kubectl logs <nome-do-pod> -n payment --since=10m
+    - kubectl logs <nome-do-pod> -n payment-api --tail=200
+    - kubectl logs <nome-do-pod> -n payment-api --since=10m
 
 ---
 
 ### 3. Métricas de recursos
 
-    - kubectl top pods -n payment
-    - kubectl top pod <nome-do-pod> -n payment --containers
+    - kubectl top pods -n payment-api
+    - kubectl top pod <nome-do-pod> -n payment-api --containers
+    - kubectl top nodes
 
 ---
 
 ### 4. Teste de conectividade com o RDS
-    - kubectl exec -it <nome-do-pod> -n payment -- nc -vz <endpoint-rds> 5432
+    - kubectl exec -it <nome-do-pod> -n payment-api -- nc -vz <endpoint-rds> 5432
 
 ---
 

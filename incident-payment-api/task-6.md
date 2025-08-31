@@ -43,18 +43,19 @@ Essa documentação serve como base para aprendizado contínuo, revisão de proc
 ---
 
 ## 🧾 Causa Raiz
-A aplicação de alta criticidade estava sendo executada em um cluster padrão com recursos limitados e autoscaling inadequado.  
-O volume inesperado de requisições causou saturação de CPU e memória nos nodes do EKS, levando a throttling e aumento de latência no processamento das requisições.
+A aplicação de alta criticidade, estava sendo executada em um cluster padrão com recursos limitados e configuração de autoscaling inadequada. Também foi analiso que a instância do RDS apresentava capacidade subdimensionada para lidar com picos de carga. Embora na maioria do tempo o sistema operava em boas condições, mas com aumento repentino no volume de requisições houve um gargalho.
+Em resumo a lentidão na resposta do autoscaling do EKS e a falta de recurso do RDS, resultou na saturação de CPU e memória nos nodes do cluster. Isso levou ao throttling dos pods e ao aumento significativo da latência no processamento das requisições, impactando diretamente a disponibilidade do serviço.
 
 ---
 
 ## 🚑 Ações Imediatas (Mitigação)
 - Escalonamento horizontal dos nodes de forma manual para aliviar a carga e estabilizar o serviço.
-
+- Aumento de da capacidade do RDS
 ---
 
 ## 🔧 Melhorias Preventivas
 - Migrar a aplicação para outro cluster ou nodegroup com capacidade adequada à sua criticidade.
-- Criar dashboards com métricas de infraestrutura, serviço, negócio e logs.
+- Explorar recurso RDS com time de Banco de dados para atender melhor o ambiente nesses cenários.
+- Criar dashboards com visão única das principais métricas de infraestrutura do EKS e RDS, serviço, negócio e logs.
   - Disponibilizar esses dashboards ao NOC para acompanhamento em tempo real.
   - Utilizar como suporte em futuras análises de incidentes.
